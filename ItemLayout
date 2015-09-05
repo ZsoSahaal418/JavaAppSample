@@ -1,0 +1,94 @@
+final ImageView im = (ImageView) v.findViewById(R.id.sagit);
+        ViewTreeObserver vt = v.getViewTreeObserver();
+        assert vt != null;
+        vt.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+
+                float baseFrameX = 1196;            //creates a base frame size based on common smartphones
+                float baseFrameY = 638;
+                float dimOne = getPixels(70);       //grabs a number of pixels to be used as the dimensions of an object
+                float dimTwo = getPixels(20);
+                float dimThree = getPixels(15);
+                float dimFour = getPixels(12);
+                float dimFive = getPixels(10);
+                float dimSix = getPixels(8);
+                float dw = im.getWidth();
+                float dh = im.getHeight();
+                float screenDiffX = dw/baseFrameX;  //finds the difference between my standardized size and the size of the
+                float screenDiffY = dh/baseFrameY;  // device being used
+                float oneX = getPixels(374);
+                float oneY = getPixels(221);        //theses lines are used to grab the x and y coordinates of the objects
+                float twoX = getPixels(210);
+                float twoY = getPixels(245);
+                float threeX = getPixels(214);
+                float threeY = getPixels(204);
+                float fourX = getPixels(257);
+                float fourY = getPixels(190);
+                float fiveX = getPixels(252);
+                float fiveY = getPixels(171);
+                float sixX = getPixels(234);
+                float sixY = getPixels(179);
+                float sevenX = getPixels(279);
+                float sevenY = getPixels(161);
+                float eightX = getPixels(343);
+                float eightY = getPixels(131);
+                float nineX = getPixels(415);
+                float nineY = getPixels(61);
+                one.setX(oneX*screenDiffX);         //Theses lines augment the location for teh x and y coordinates based on
+                one.setY(oneY*screenDiffY);         // the different screen ratios
+                two.setX(twoX*screenDiffX);
+                two.setY(twoY*screenDiffY);
+                three.setX(threeX*screenDiffX);
+                three.setY(threeY*screenDiffY);
+                four.setX(fourX*screenDiffX);
+                four.setY(fourY*screenDiffY);
+                five.setX(fiveX*screenDiffX);
+                five.setY(fiveY*screenDiffY);
+                six.setX(sixX*screenDiffX);
+                six.setY(sixY*screenDiffY);
+                seven.setX(sevenX*screenDiffX);
+                seven.setY(sevenY*screenDiffY);
+                eight.setX(eightX*screenDiffX);
+                eight.setY(eightY*screenDiffY);
+                nine.setX(nineX*screenDiffX);
+                nine.setY(nineY*screenDiffY);
+                bitmap = Bitmap.createBitmap((int) dw, (int) dh,
+                        Bitmap.Config.ARGB_8888);
+                canvas = new Canvas(bitmap);
+                paint = new Paint();
+                paint.setColor(Color.GREEN);
+                paint.setStrokeWidth(2);
+                onex = one.getX() + (dimThree/2);
+                oney = one.getY() + (dimThree/2);
+                twox = two.getX() + (dimFour/2);
+                twoy = two.getY() + (dimFour/2);
+                canvas.drawLine(onex,oney,twox,twoy,paint);
+                fourx = three.getX() + (dimFive/2);
+                foury = three.getY() + (dimFive/2);
+                canvas.drawLine(twox,twoy,fourx,foury,paint);
+                twox = four.getX() + (dimFive/2);
+                twoy = four.getY() + (dimFive/2);
+                canvas.drawLine(fourx,foury,twox,twoy,paint);
+                onex = five.getX() + (dimSix/2);
+                oney = five.getY() + (dimSix/2);
+                canvas.drawLine(onex,oney,twox,twoy,paint);
+                twox = six.getX() + (dimFive/2);
+                twoy = six.getY() + (dimFive/2);
+                canvas.drawLine(onex,oney,twox,twoy,paint);
+                canvas.drawLine(fourx,foury,twox,twoy,paint);
+                twox = seven.getX() + (dimSix/2);
+                twoy = seven.getY() + (dimSix/2);
+                canvas.drawLine(onex,oney,twox,twoy,paint);
+                onex = eight.getX() + (dimFour/2);
+                oney = eight.getY() + (dimFour/2);
+                canvas.drawLine(onex,oney,twox,twoy,paint);
+                twox = nine.getX() + (dimFive/2);
+                twoy = nine.getY() + (dimFive/2);
+                canvas.drawLine(onex,oney,twox,twoy,paint);
+                im.setImageBitmap(bitmap);
+            }
+        });
+
+        return v;
+    }
