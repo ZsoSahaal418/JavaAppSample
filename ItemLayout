@@ -53,7 +53,7 @@ final ImageView im = (ImageView) v.findViewById(R.id.sagit);
                 eight.setY(eightY*screenDiffY);
                 nine.setX(nineX*screenDiffX);
                 nine.setY(nineY*screenDiffY);
-                bitmap = Bitmap.createBitmap((int) dw, (int) dh,
+                bitmap = Bitmap.createBitmap((int) dw, (int) dh,  //Creates Bitmap to apply to the screen.
                         Bitmap.Config.ARGB_8888);
                 canvas = new Canvas(bitmap);
                 paint = new Paint();
